@@ -15,7 +15,7 @@ async fn main() -> Result<(), GooseError> {
     GooseAttack::initialize()?
         .register_taskset(
             taskset!("WebsiteVisitor;")
-                .set_wait_time(Duration::from_secs(10), Duration::from_secs(60))?
+                .set_wait_time(Duration::from_secs(1), Duration::from_secs(30))?
                 .register_task(task!(init_session).set_on_start())
                 .register_task(task!(api_event))
         )

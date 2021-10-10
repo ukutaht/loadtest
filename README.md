@@ -21,3 +21,15 @@ Some properties like the pageview URL are static because they undergo minimal pr
 
 Each user session generates a call to `/api/event` at random intervals between 10 and 60 seconds. The test aims to
 find the maximum number of concurrent users that a given Plausible Analytics server can handle.
+
+### Running
+
+First, make sure to increase the limit of open files and ephemeral ports on the load generating machine.
+The following setup will be sufficient to simulate up to 60k simultaneous users.
+
+```bash
+$ sudo ulimit -n 100000
+$ sudo sysctl -w net.ipv4.ip_local_port_range="1024 65535"
+```
+
+Simulating 60k concurrent visitors from one host requires ~45GB of memory.
